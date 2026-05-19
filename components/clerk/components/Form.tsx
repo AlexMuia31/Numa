@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   formContainer: {
-    backgroundColor: "#ffffff",
     paddingHorizontal: 24,
     paddingTop: 20,
     paddingBottom: 20,
