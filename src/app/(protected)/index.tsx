@@ -1,10 +1,13 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SignOutButton from "../../../components/clerk/SignOutButton";
 
 export default function Index() {
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <SafeAreaView>
+      <Text>test</Text>
+      <SignOutButton />
+    </SafeAreaView>
   );
 }
