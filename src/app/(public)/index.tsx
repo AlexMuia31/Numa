@@ -1,10 +1,6 @@
 import React from "react";
-import { Text, View } from "react-native";
+import SignIn from "../../../components/clerk/SignIn";
 
 export default function index() {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
+  return <SignIn signUpUrl="" scheme="numa" />;
 }

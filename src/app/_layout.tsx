@@ -1,6 +1,7 @@
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { Stack } from "expo-router";
+import "react-native-reanimated";
 
 function RootLayoutWithAuth() {
   const { isSignedIn, isLoaded } = useAuth();
