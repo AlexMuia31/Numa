@@ -10,6 +10,7 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import {
   useDerivedValue,
   useSharedValue,
+  withRepeat,
   withSpring,
   withTiming,
 } from "react-native-reanimated";
@@ -125,6 +126,33 @@ export function Gradient({ position, isSpeaking }: GradientProps) {
       duration: ANIMATION_CONFIG.duration.MOUNT,
     });
   });
+
+  useEffect(() => {
+    const duration = ANIMATION_CONFIG.duration.SPEAKING_TRANSITION;
+    if (isSpeaking) {
+      baseRadiusValue.value = withTiming(RADIUS_CONFIG.baseRadius.speaking);
+      animateY.value = withTiming(getTargetY("center"), { duration });
+    } else {
+      baseRadiusValue.value = withTiming(RADIUS_CONFIG.baseRadius.default);
+      animateY.value = withTiming(getTargetY(position), { duration });
+    }
+  }, [isSpeaking, baseRadiusValue, animateY, position]);
+
+  useEffect(() => {
+    if (isSpeaking) {
+      radiusScale.value = withRepeat(
+        withTiming(RADIUS_CONFIG.speakingScale, {
+          duration: ANIMATION_CONFIG.duration.PULSE,
+        }),
+        -1,
+        true,
+      );
+    } else {
+      radiusScale.value = withTiming(RADIUS_CONFIG.quietScale, {
+        duration: ANIMATION_CONFIG.duration.QUIET_TRANSITION,
+      });
+    }
+  }, [isSpeaking, radiusScale]);
 
   return (
     <View style={StyleSheet.absoluteFill}>
