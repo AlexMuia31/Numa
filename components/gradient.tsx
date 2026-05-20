@@ -7,6 +7,7 @@ import {
 } from "@shopify/react-native-skia";
 import React from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
+import { useDerivedValue, useSharedValue } from "react-native-reanimated";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -19,6 +20,10 @@ const VISUAL_CONFIG = {
 } as const;
 
 export function Gradient() {
+  const animateY = useSharedValue(0);
+  const center = useDerivedValue(() => {
+    return;
+  });
   return (
     <View style={StyleSheet.absoluteFill}>
       <Canvas style={{ flex: 1 }}>
