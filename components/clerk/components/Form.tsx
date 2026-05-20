@@ -11,7 +11,7 @@ interface FormProps {
 export function Form({ title, subtitle, children, headerChildren }: FormProps) {
   return (
     <>
-      <Gradient />
+      <Gradient isSpeaking={false} position="top" />
       <View style={styles.container}>
         <View style={styles.contentWrapper}>
           <View style={styles.headerContainer}>
