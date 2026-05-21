@@ -1,13 +1,6 @@
 import React from "react";
-import { Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import SignOutButton from "../../../components/clerk/SignOutButton";
+import SessionScreen from "../../../components/screens/SessionScreen";
 
 export default function Index() {
-  return (
-    <SafeAreaView>
-      <Text>test</Text>
-      <SignOutButton />
-    </SafeAreaView>
-  );
+  return <SessionScreen />;
 }
