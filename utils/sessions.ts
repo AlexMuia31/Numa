@@ -25,7 +25,7 @@ export const sessions: Session[] = [
     title: "Insight Timer",
     description:
       "A free meditation app with thousands of guided sessions, a customizable timer, and a global community of meditators for all experience levels.",
-    image: require("@/assets/images/sessions/insight_timer.jpeg"),
+    image: require("@/assets/images/sessions/Insight_timer.jpeg"),
   },
   {
     id: 4,
