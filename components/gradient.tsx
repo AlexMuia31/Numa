@@ -31,6 +31,7 @@ const ANIMATION_CONFIG = {
     SPEAKING_TRANSITION: 600,
     QUIET_TRANSITION: 400,
     PULSE: 1000,
+    WOBBLE_CYCLE: 2000, // time for a full wobble cycle
   },
   spring: {
     damping: 10,
@@ -41,7 +42,7 @@ const ANIMATION_CONFIG = {
 const RADIUS_CONFIG = {
   minScale: 0.6,
   maxScale: 1.4,
-  speakingScale: 1.0,
+  speakingScale: 2.0,
   quietScale: 0.6,
   baseRadius: {
     default: width,
