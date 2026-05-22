@@ -100,7 +100,7 @@ export default function SessionScreen() {
               ${
                 isConnected
                   ? "bg-red-500 active:bg-red-600"
-                  : "bg-indigo-600 active:bg-indigo-700"
+                  : "bg-[#007AFF] active:bg-[#007AFF]/90"
               }
             `}
           >
