@@ -26,5 +26,6 @@ export interface ConversationResponse {
   metadata: ConversationMetadata;
   has_audio: boolean;
   has_user_audio: boolean;
+  has_response_audio: boolean;
   analysis: Analysis;
 }
