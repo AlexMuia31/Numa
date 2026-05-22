@@ -1,5 +1,6 @@
 import { useUser } from "@clerk/clerk-expo";
 import { useConversation } from "@elevenlabs/react-native";
+import * as Brightness from "expo-brightness";
 import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -34,7 +35,18 @@ export default function SessionScreen() {
     onError: (error) => {
       console.error("Conversation error:", error);
     },
-    clientTools: {},
+    clientTools: {
+      handleSetBrightness: async (parameters: unknown) => {
+        const { brightnessValue } = parameters as { brightnessValue: number };
+        console.log("setting brightness to ", brightnessValue);
+
+        const { status } = await Brightness.requestPermissionsAsync();
+        if (status === "granted") {
+          await Brightness.setSystemBrightnessAsync(brightnessValue);
+          return brightnessValue;
+        }
+      },
+    },
   });
 
   const startConversation = async () => {
