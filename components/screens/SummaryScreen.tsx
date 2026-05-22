@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
+import { ConversationResponse } from "../../utils/types";
 import { Gradient } from "../gradient";
 
 export default function SummaryScreen() {
