@@ -34,6 +34,7 @@ export default function SessionScreen() {
     onError: (error) => {
       console.error("Conversation error:", error);
     },
+    clientTools: {},
   });
 
   const startConversation = async () => {
