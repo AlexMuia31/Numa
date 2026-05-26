@@ -7,6 +7,8 @@ import { Gradient } from "../gradient";
 export default function SummaryScreen() {
   const { conversationId } = useLocalSearchParams();
   const [conversation, setConversation] = useState<ConversationResponse>();
+
+  console.log("converstionId", conversationId);
   return (
     <>
       {" "}

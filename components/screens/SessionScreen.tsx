@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/clerk-expo";
 import { useConversation } from "@elevenlabs/react-native";
 import * as Brightness from "expo-brightness";
-import { Redirect, useLocalSearchParams } from "expo-router";
+import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,6 +12,8 @@ export default function SessionScreen() {
   const { user } = useUser();
   const { sessionId } = useLocalSearchParams();
   const [isConnected, setIsConnected] = useState(false);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const router = useRouter();
 
   const session =
     sessions.find((s) => s.id === Number(sessionId)) ?? sessions[0];
@@ -21,9 +23,10 @@ export default function SessionScreen() {
   }
 
   const conversation = useConversation({
-    onConnect: () => {
+    onConnect: ({ conversationId }: { conversationId: string }) => {
       console.log("Connected to conversation");
       setIsConnected(true);
+      setConversationId(conversationId);
     },
     onDisconnect: () => {
       console.log("Disconnected from conversation");
@@ -67,6 +70,10 @@ export default function SessionScreen() {
   const endConversation = async () => {
     try {
       await conversation.endSession();
+      router.push({
+        pathname: "/summary",
+        params: { conversationId },
+      });
     } catch (error) {
       console.error("Failed to end conversation:", error);
     }
